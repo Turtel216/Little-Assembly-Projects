@@ -34,13 +34,20 @@ try_again:
 	mov rdx, 9   // idk maybe range ?
 	syscall
 
-	// PRINT
-	// message given by user
-	mov rax, 1
-	mov rdi, 1   // stdout
-	mov rsi, num // the message to be printed
-	mov rdx, 1   // message length
-	syscall
+	// COMPARE
+	mov rax, num  // input
+	mov rdi, rdm  // random number
+	cmp rax, rdi
+	je  victory   // if equal show victory screen
+	jmp try_again // try again
+
+// PRINT
+// message given by user
+mov rax, 1
+mov rdi, 1   // stdout
+mov rsi, num // the message to be printed
+mov rdx, 1   // message length
+syscall
 
 victory:
 	// PRINT
